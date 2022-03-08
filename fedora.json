@@ -15,7 +15,7 @@
         "https://download.fedoraproject.org/pub/fedora/linux/releases/35/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-35-1.2.iso"
       ],
       "output_directory": "Fedora_35",
-      "shutdown_command": "echo 'password'|sudo -S /sbin/halt -h -p",
+      "shutdown_command": "echo 'yes42069amogus' | sudo -S /sbin/halt -h -p",
       "ssh_password": "yes42069amogus",
       "ssh_port": 22,
       "ssh_timeout": "10000s",
