@@ -37,7 +37,7 @@
   ],
   "provisioners": [
     {
-      "execute_command": "echo 'password' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "execute_command": "echo 'yes42069amogus' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
       "scripts": ["scripts/setup.sh","scripts/cleanup.sh"],
       "type": "shell"
     }
