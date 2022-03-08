@@ -32,7 +32,7 @@
     {
       "type": "vagrant",
       "compression_level": "3",
-      "output": "fedora-35.box"
+      "output": "image/fedora-35.box"
     }
   ],
   "provisioners": [
