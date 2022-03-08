@@ -1,34 +1,45 @@
 {
   "builders": [
     {
-      "type": "virtualbox-iso",
-      "guest_os_type": "Fedora_64",
-      "iso_url": "/home/raambm/Unduhan/Fragments/Fedora-Workstation-Live-x86_64-35/Fedora-Workstation-Live-x86_64-35-1.2.iso",
-      "iso_checksum": "sha256:85d9d0c233d560e401e2ad824aa8e6d5614e8b977dfe685396bfb2eb3ba5b253",
-      "output_directory": "fedora-35-x86_64",
-      "vm_name": "packer-fedora-35-x86_64",
-      "disk_size": "16000",
-      "boot_wait": "5s",
       "boot_command": [
-        "<tab> ",
-        "biosdevname=0 ",
-        "net.ifnames=0 ",
-        "<enter>"
+        "<tab> linux text net.ifnames=0 biosdevname=0 inst.ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
       ],
-      "ssh_timeout": "10s",
-      "ssh_username": "fedora-zhaf",
-      "ssh_password": "soniczahejehogu",
-      "shutdown_command": "sudo systemctl poweroff",
+      "boot_wait": "10s",
+      "disk_size": "16000",
+      "guest_os_type": "Fedora_64",
+      "headless": false,
+      "http_directory": "http",
+      "iso_checksum": "sha256:d52d74970bc2c7d46a5e92c841951e96febb2aa8952e9259ea75cf1212f24a0a",
+      "iso_urls": [
+        "./Fedora-Everything-netinst-x86_64-35-1.2.iso",
+        "https://download.fedoraproject.org/pub/fedora/linux/releases/35/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-35-1.2.iso"
+      ],
+      "output_directory": "Fedora_35",
+      "shutdown_command": "echo 'password'|sudo -S /sbin/halt -h -p",
+      "ssh_password": "yes42069amogus",
+      "ssh_port": 22,
+      "ssh_timeout": "10000s",
+      "ssh_username": "crewmate",
+      "type": "virtualbox-iso",
+      "vm_name": "Fedora_35_64-bit",
       "vboxmanage": [
-        ["modifyvm", "packer-fedora-35-x86_64", "--memory", "4096"],
-        ["modifyvm", "packer-fedora-35-x86_64", "--cpus", "2"]
+        ["modifyvm", "Fedora_35_64-bit", "--memory", "4960"],
+        ["modifyvm", "Fedora_35_64-bit", "--cpus", "4"]
       ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "compression_level": "3",
+      "output": "fedora-35.box"
     }
   ],
   "provisioners": [
     {
-      "type": "shell",
-      "script": "setup.sh"
+      "execute_command": "echo 'password' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "script": ["scripts/setup.sh","scripts/cleanup.sh"],
+      "type": "shell"
     }
   ]
 }
