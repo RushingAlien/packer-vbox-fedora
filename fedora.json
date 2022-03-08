@@ -38,7 +38,7 @@
   "provisioners": [
     {
       "execute_command": "echo 'yes42069amogus' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
-      "scripts": ["scripts/setup.sh","scripts/cleanup.sh"],
+      "scripts": ["scripts/setup.sh"],
       "type": "shell"
     }
   ]
