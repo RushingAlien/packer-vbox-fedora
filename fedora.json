@@ -19,7 +19,7 @@
       "ssh_password": "yes42069amogus",
       "ssh_port": 22,
       "ssh_timeout": "10000s",
-      "ssh_username": "crewmate",
+      "ssh_username": "vagrant",
       "type": "virtualbox-iso",
       "vm_name": "Fedora_35_64-bit",
       "vboxmanage": [
