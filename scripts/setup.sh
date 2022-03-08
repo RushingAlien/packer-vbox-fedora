@@ -1,5 +1,5 @@
 #!/bin/bash
-dnf update -y
+dnf check-update
 # install vbox guest additions
 mount -o loop,ro ~/VBoxGuestAdditions.iso /mnt/
 /mnt/VBoxLinuxAdditions.run
